@@ -32,7 +32,7 @@ public class OrganizationController {
     public void update(@PathVariable Long id,@RequestBody OrganizationRequest organizationRequest){
         organizationServiceImpl.update(id,organizationRequest);
     }
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         organizationServiceImpl.delete(id);
     }
