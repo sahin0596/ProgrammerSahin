@@ -1,0 +1,13 @@
+server:
+  port: 5432
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3305/RSP?createDatabaseIfNotExist=true
+    username: root
+    password: password
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+    open-in-view: false
+
