@@ -24,8 +24,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserResponse> findAll() {
-        return userRepository
-                .findAll()
+        return userRepository.findAll()
                 .stream()
                 .map(user -> modelMapper.map(user, UserResponse.class))
                 .collect(Collectors.toList());
@@ -48,5 +47,12 @@ public class UserServiceImpl implements UserService {
         User user = modelMapper.map(id, User.class);
         userRepository.deleteById(id);
         return modelMapper.map(userRepository.save(user), UserResponse.class);
+    }
+
+    @Override
+    public UserResponse findById(Long id) {
+        User user = modelMapper.map(id, User.class);
+        userRepository.findById(id).orElseThrow(RuntimeException::new);
+        return modelMapper.map(user, UserResponse.class);
     }
 }

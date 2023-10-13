@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/booking")
+@RequestMapping("api/booking")
 public class UserController {
 
     private final UserServiceImpl userServiceImpl;
@@ -25,6 +25,11 @@ public class UserController {
     @PostMapping("/post")
     public ResponseEntity<UserResponse> save(@RequestBody UserRequest userRequest) {
         return new ResponseEntity<>(userServiceImpl.save(userRequest), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserResponse> findById(@PathVariable Long id) {
+        return new ResponseEntity<>(userServiceImpl.findById(id), HttpStatus.OK);
     }
 
     @PutMapping("/put")
