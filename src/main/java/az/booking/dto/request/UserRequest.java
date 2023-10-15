@@ -22,7 +22,5 @@ public class UserRequest {
 
     String phoneNumber;
 
-    String mail;
-
     String password;
 }

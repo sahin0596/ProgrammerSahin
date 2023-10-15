@@ -1,5 +1,6 @@
 package az.booking.service;
 
+import az.booking.domain.User;
 import az.booking.dto.request.UserRequest;
 import az.booking.dto.response.UserResponse;
 import org.springframework.stereotype.Service;
@@ -13,9 +14,9 @@ public interface UserService {
 
     UserResponse save(UserRequest userRequest);
 
-    UserResponse update(UserRequest userRequest);
+    User update(Long userId, UserRequest userRequest);
 
-    UserResponse delete(Long id);
+    void delete(Long userId);
 
-    UserResponse findById(Long id);
+    UserResponse findById(Long userId);
 }

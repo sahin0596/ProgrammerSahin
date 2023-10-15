@@ -1,6 +1,5 @@
 package az.booking.dto.response;
 
-import az.booking.domain.Booking;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,7 +16,7 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserResponse {
 
-    Long id;
+    Long userId;
 
     String name;
 
@@ -27,9 +26,7 @@ public class UserResponse {
 
     String phoneNumber;
 
-    String mail;
-
     String password;
 
-    List<BookingResponse> booking;
+    List<BookingResponse> bookings;
 }

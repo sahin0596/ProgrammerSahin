@@ -24,7 +24,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserResponse> findAll() {
-        return userRepository.findAll()
+        return userRepository
+                .findAll()
                 .stream()
                 .map(user -> modelMapper.map(user, UserResponse.class))
                 .collect(Collectors.toList());
@@ -37,22 +38,28 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponse update(UserRequest userRequest) {
-        User user = modelMapper.map(userRequest, User.class);
-        return modelMapper.map(userRepository.save(user), UserResponse.class);
+    public User update(Long userId, UserRequest userRequest) {
+        userRepository.findById(userId).orElseThrow(()-> new RuntimeException(
+                String.format("User not found for updating by id -%s", userId)
+        ));
+        User responseUser = modelMapper.map(userRequest, User.class);
+        responseUser.setUserId(userId);
+        return modelMapper.map(userRepository.save(responseUser), User.class);
     }
 
     @Override
-    public UserResponse delete(Long id) {
-        User user = modelMapper.map(id, User.class);
-        userRepository.deleteById(id);
-        return modelMapper.map(userRepository.save(user), UserResponse.class);
+    public void delete(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException(
+                String.format("User not found for deleting by id -%s", userId)
+        ));
+        userRepository.delete(user);
     }
 
     @Override
-    public UserResponse findById(Long id) {
-        User user = modelMapper.map(id, User.class);
-        userRepository.findById(id).orElseThrow(RuntimeException::new);
+    public UserResponse findById(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException(
+                String.format("User not found by id -%s", userId)
+        ));
         return modelMapper.map(user, UserResponse.class);
     }
 }

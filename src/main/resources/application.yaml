@@ -1,8 +1,8 @@
 server:
-  port: 5432
+  port: 8083
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3305/RSP?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:1005/RUFET?createDatabaseIfNotExist=true
     username: root
     password: password
   jpa:
@@ -10,4 +10,3 @@ spring:
     generate-ddl: true
     show-sql: true
     open-in-view: false
-

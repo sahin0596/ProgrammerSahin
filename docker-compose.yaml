@@ -1,16 +1,16 @@
 version: '3.3'
 services:
-  RSP:
+  RUFET:
     image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: 'password'
     ports:
-      - '3305:3306'
+      - '1005:3306'
     volumes:
       - my-db:/var/lib/mysql
   adminer:
     image: dockette/adminer:full-php5
     ports:
-      - '3338:8080'
+      - '2208:8080'
 volumes:
   my-db:
