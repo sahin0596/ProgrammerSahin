@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20230924-06
+      author: SahinNesibov
+      changes:
+        - modifyDataType:
+            tableName: humans
+            columnName: fin_code
+            newDataType: VARCHAR(255)

@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20230924-07
+      author: SahinNesibov
+      changes:
+        - insert:
+            tableName: humans
+            columns:
+                - column:
+                    name: name
+                    value: admin
+                - column:
+                    name: password
+                    value: admin12345
+                - column:
+                    name: fin_code
+                    value: 1R02LLL

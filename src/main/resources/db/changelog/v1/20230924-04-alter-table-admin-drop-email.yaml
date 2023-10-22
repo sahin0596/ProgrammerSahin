@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20230924-04
+      author: SahinNesibov
+      changes:
+        - dropColumn:
+            tableName: humans
+            columnName: email
+
