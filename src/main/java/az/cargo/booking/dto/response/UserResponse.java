@@ -1,10 +1,8 @@
 package az.cargo.booking.dto.response;
 
-import az.cargo.booking.domain.Booking;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Data

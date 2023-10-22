@@ -1,5 +1,4 @@
 package az.cargo.booking.controller;
-
 import az.cargo.booking.dto.request.UserRequest;
 import az.cargo.booking.dto.response.UserResponse;
 import az.cargo.booking.service.UserServiceImp;
