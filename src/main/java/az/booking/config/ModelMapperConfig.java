@@ -1,4 +1,4 @@
-package az.booking.configuration;
+package az.booking.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

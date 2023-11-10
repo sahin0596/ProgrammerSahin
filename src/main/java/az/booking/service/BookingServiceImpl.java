@@ -20,8 +20,11 @@ import java.util.stream.Collectors;
 public class BookingServiceImpl implements BookingService {
 
     private final BookingRepository bookingRepository;
+
     private final ModelMapper modelMapper;
+
     private final UserRepository userRepository;
+
     private final PaymentRepository paymentRepository;
 
     @Override

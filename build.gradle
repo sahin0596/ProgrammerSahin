@@ -30,8 +30,12 @@ dependencies {
     implementation group: 'org.eclipse.jetty', name: 'jetty-jmx', version: '12.0.1'
     implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.1.1'
     runtimeOnly 'com.mysql:mysql-connector-j'
+    implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.2'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('test') {
