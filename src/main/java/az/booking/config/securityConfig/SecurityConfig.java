@@ -25,9 +25,9 @@ public class SecurityConfig implements ApplicationSecurityConfig {
 
         configurePublicOperations(requestMatcherRegistry);
 
-        configureUserOperations(requestMatcherRegistry);
+        configureAdminOrUserOperations(requestMatcherRegistry);
 
-        configureStaffOperations(requestMatcherRegistry);
+        configureAdminOrStaffOperations(requestMatcherRegistry);
 
         configureAdminOperations(requestMatcherRegistry);
 
@@ -42,13 +42,13 @@ public class SecurityConfig implements ApplicationSecurityConfig {
 
     }
 
-    private void configureUserOperations(AuthorizeHttpRequestsConfigurer<HttpSecurity>
+    private void configureAdminOrUserOperations(AuthorizeHttpRequestsConfigurer<HttpSecurity>
                                                  .AuthorizationManagerRequestMatcherRegistry http) {
         http.requestMatchers(HttpMethod.GET, "api/booking/{id}").authenticated();
 
     }
 
-    private void configureStaffOperations(AuthorizeHttpRequestsConfigurer<HttpSecurity>
+    private void configureAdminOrStaffOperations(AuthorizeHttpRequestsConfigurer<HttpSecurity>
                                                   .AuthorizationManagerRequestMatcherRegistry http) {
         http.requestMatchers(HttpMethod.GET, "api/booking/{id}").authenticated();
 

@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/users")
+@RequestMapping("/api/users")
 public class UserController {
 
     private final UserService userService;
@@ -35,7 +35,6 @@ public class UserController {
 
     @PutMapping("/{id}")
     public ResponseEntity<User> update(@PathVariable Long id, @RequestBody UserRequest userRequest) {
-
         return new ResponseEntity<>(userService.update(id, userRequest), HttpStatus.CREATED);
     }
 

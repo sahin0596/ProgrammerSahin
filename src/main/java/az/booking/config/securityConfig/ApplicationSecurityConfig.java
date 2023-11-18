@@ -8,5 +8,6 @@ public interface ApplicationSecurityConfig {
 
     @SneakyThrows
     void configure(AuthorizeHttpRequestsConfigurer<HttpSecurity>
-                           .AuthorizationManagerRequestMatcherRegistry requestMatcherRegistry);
+                           .AuthorizationManagerRequestMatcherRegistry requestMatcherRegistry)
+            throws Exception;
 }
