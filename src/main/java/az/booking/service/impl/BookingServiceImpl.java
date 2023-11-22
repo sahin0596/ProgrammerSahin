@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Book;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -47,6 +48,13 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
+    public void delete(Long id) {
+        Booking booking = bookingRepository.findById(id).orElseThrow(() ->
+                new ApplicationException(Errors.BOOKING_NOT_FOUND));
+        bookingRepository.delete(booking);
+    }
+
+    @Override
     public List<BookingResponse> save(Long userId, Long paymentId, BookingRequest bookingRequest) {
         User user = getUserById(userId);
         Payment payment = getPaymentById(paymentId);
@@ -64,10 +72,10 @@ public class BookingServiceImpl implements BookingService {
                 new ApplicationException(Errors.PAYMENT_NOT_FOUND));
     }
 
-    private Booking createBooking(User user, Payment payment, BookingRequest bookingRequest) {
+    private Booking createBooking(User userId, Payment paymentId, BookingRequest bookingRequest) {
         Booking booking = modelMapper.map(bookingRequest, Booking.class);
-        booking.setPayment(payment);
-        booking.setUser(user);
+        booking.setPayment(paymentId);
+        booking.setUser(userId);
         return bookingRepository.save(booking);
     }
 
@@ -76,9 +84,28 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public void delete(Long id) {
-        Booking booking = bookingRepository.findById(id).orElseThrow(() ->
+    public Booking update(Long id, Long paymentId, Long userId, BookingRequest bookingRequest){
+        User user = getUserById(userId);
+        Payment payment = getPaymentById(paymentId);
+        Booking booking = getBookingById(id);
+        Booking booking1 = updateBooking(booking, user, payment, bookingRequest);
+        return (Booking) mapToBooking(booking1);
+    }
+
+    private Booking getBookingById(Long id){
+        return bookingRepository.findById(id).orElseThrow(() ->
                 new ApplicationException(Errors.BOOKING_NOT_FOUND));
-        bookingRepository.delete(booking);
+    }
+
+    private Booking updateBooking(Booking id, User userId, Payment paymentId, BookingRequest bookingRequest){
+        Booking booking = modelMapper.map(bookingRequest, Booking.class);
+        booking.setId(id.getId());
+        booking.setUser(userId);
+        booking.setPayment(paymentId);
+        return bookingRepository.save(booking);
+    }
+
+    private Booking mapToBooking(Booking booking1){
+        return modelMapper.map(booking1, Booking.class);
     }
 }

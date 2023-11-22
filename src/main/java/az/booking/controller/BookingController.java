@@ -1,9 +1,9 @@
 package az.booking.controller;
 
+import az.booking.domain.Booking;
 import az.booking.dto.request.BookingRequest;
 import az.booking.dto.response.BookingResponse;
 import az.booking.service.BookingService;
-import az.booking.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +35,14 @@ public class BookingController {
                                                 @PathVariable Long paymentId,
                                                 @RequestBody BookingRequest bookingRequest){
         return new ResponseEntity<>(bookingService.save(userId, paymentId, bookingRequest), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/bookings/{id}/payments/{paymentId}/users/{userId}")
+    public ResponseEntity<Booking> update(@PathVariable Long id,
+                                          @PathVariable Long paymentId,
+                                          @PathVariable Long userId,
+                                          @RequestBody BookingRequest bookingRequest) {
+        return new ResponseEntity<>(bookingService.update(id, paymentId, userId, bookingRequest), HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/{id}")
