@@ -14,7 +14,7 @@ public interface PaymentService {
 
     PaymentResponse save(PaymentRequest paymentRequest);
 
-    Payment update(PaymentRequest paymentRequest, Long paymentId);
+    Payment update(PaymentRequest paymentRequest, Long id);
 
     void delete(Long paymentId);
 }

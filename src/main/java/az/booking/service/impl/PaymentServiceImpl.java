@@ -45,10 +45,10 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public Payment update(PaymentRequest paymentRequest, Long paymentId) {
-        paymentRepository.findById(paymentId).orElseThrow(() -> new ApplicationException(Errors.PAYMENT_NOT_FOUND));
+    public Payment update(PaymentRequest paymentRequest, Long id) {
+        paymentRepository.findById(id).orElseThrow(() -> new ApplicationException(Errors.PAYMENT_NOT_FOUND));
         Payment responsePayment = modelMapper.map(paymentRequest, Payment.class);
-        responsePayment.setPaymentId(paymentId);
+        responsePayment.setPaymentId(id);
         return modelMapper.map(paymentRepository.save(responsePayment), Payment.class);
     }
 

@@ -20,9 +20,9 @@ public class PaymentController {
     private final PaymentService paymentService;
 
 
-    @GetMapping("/{id}")
-    public ResponseEntity<PaymentResponse> findById(@PathVariable Long id){
-        return new ResponseEntity<>(paymentService.findById(id), HttpStatus.OK);
+    @GetMapping("/{paymentId}")
+    public ResponseEntity<PaymentResponse> findById(@PathVariable Long paymentId){
+        return new ResponseEntity<>(paymentService.findById(paymentId), HttpStatus.OK);
     }
 
     @GetMapping
@@ -35,12 +35,12 @@ public class PaymentController {
         return new ResponseEntity<>(paymentService.save(paymentRequest), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{paymentId}")
     public ResponseEntity<Payment> update(@RequestBody PaymentRequest paymentRequest, @PathVariable Long paymentId){
         return new ResponseEntity<>(paymentService.update(paymentRequest, paymentId), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{paymentId}")
     public void delete (@PathVariable Long paymentId){
         paymentService.delete(paymentId);
     }

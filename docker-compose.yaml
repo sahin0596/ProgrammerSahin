@@ -13,4 +13,4 @@ services:
     ports:
       - '2208:8080'
 volumes:
-  my-db:
+  my-db: 
