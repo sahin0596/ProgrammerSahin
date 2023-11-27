@@ -1,8 +1,7 @@
 package az.cargo.booking.controller;
 
-import az.cargo.booking.dto.request.BookingRequest;
-import az.cargo.booking.dto.response.BookingResponse;
-import az.cargo.booking.service.BookingServiceImp;
+import az.cargo.booking.domain.Booking;
+import az.cargo.booking.service.BookingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,24 +14,32 @@ import java.util.List;
 @RequestMapping("/b1")
 public class BookingController {
 
-  private final BookingServiceImp bookingServiceImp;
+  private final BookingService bookingService;
 
-  @GetMapping("{id}")
-  public ResponseEntity <BookingResponse> findById(@PathVariable Long id) {
-    return new ResponseEntity<>(bookingServiceImp.findById(id), HttpStatus.OK);
+
+  @PostMapping
+  public ResponseEntity<Booking> createBooking(@RequestBody Booking booking) {
+    Booking createdBooking = bookingService.createBooking(booking);
+    return new ResponseEntity<>(createdBooking, HttpStatus.CREATED);
   }
-  @GetMapping()
-  public ResponseEntity<List<BookingResponse>> findAll(){
-    return new ResponseEntity<>(bookingServiceImp.findAll(),HttpStatus.OK);
+
+  @GetMapping
+  public ResponseEntity<List<Booking>> getAllBookings() {
+    List<Booking> bookings = bookingService.getAllBookings();
+    return new ResponseEntity<>(bookings, HttpStatus.OK);
   }
-  @PostMapping("/payments/{paymentId}/users/{userId}")
-   public ResponseEntity<BookingResponse> save(@PathVariable Long userId,
-                                               @PathVariable Long paymentId,
-                                               @RequestBody BookingRequest bookingRequest){
-    return  new ResponseEntity<>(bookingServiceImp.save(userId,paymentId,bookingRequest),HttpStatus.CREATED);
+
+  @GetMapping("/{bookingId}")
+  public ResponseEntity<Booking> getBookingById(@PathVariable Long bookingId) {
+    Booking booking = bookingService.getBookingById(bookingId);
+    return new ResponseEntity<>(booking, HttpStatus.OK);
   }
-  @DeleteMapping("{id}")
-  public void delete(@PathVariable Long id){
-    bookingServiceImp.delete(id);
+
+  @DeleteMapping("/{bookingId}")
+  public ResponseEntity<Void> deleteBooking(@PathVariable Long bookingId) {
+    bookingService.deleteBooking(bookingId);
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
+
+
 }

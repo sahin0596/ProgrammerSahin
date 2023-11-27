@@ -1,9 +1,9 @@
 server:
-  port: 4444
+  port: 8080
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:6666/DBL?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:2221/BKG?createDatabaseIfNotExist=true
     username: root
     password: password
   jpa:

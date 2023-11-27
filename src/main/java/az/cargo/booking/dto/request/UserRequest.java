@@ -1,7 +1,10 @@
 package az.cargo.booking.dto.request;
 
+import az.cargo.booking.dto.response.BookingResponse;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.List;
 
 @Data
 @Builder
@@ -17,4 +20,5 @@ public class UserRequest {
     String email;
 
     String phoneNumber;
+
 }

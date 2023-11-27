@@ -1,11 +1,11 @@
 version: '3.3'
 services:
-  DBL:
+  BKG:
     image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: 'password'
     ports:
-      - '6666:3306'
+      - '2221:3306'
     volumes:
       - my-db:/var/lib/mysql
   adminer:

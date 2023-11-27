@@ -12,7 +12,7 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "flys")
-public class Flights {
+public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;

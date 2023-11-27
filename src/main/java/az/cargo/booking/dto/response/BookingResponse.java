@@ -1,9 +1,11 @@
 package az.cargo.booking.dto.response;
 
-import az.cargo.booking.domain.Flights;
+import az.cargo.booking.domain.Flight;
 import az.cargo.booking.domain.Hotel;
 import az.cargo.booking.domain.RentalCar;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
 import java.util.List;
@@ -19,9 +21,9 @@ public class BookingResponse {
 
     Double totalCost;
 
-    List<Flights> flights;
+    List<Flight> flights;
 
-    List<Hotel>hotels;
+    List<Hotel> hotels;
 
     List<RentalCar> rentalCars;
 

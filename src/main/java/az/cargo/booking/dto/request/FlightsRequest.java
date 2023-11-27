@@ -1,5 +1,6 @@
 package az.cargo.booking.dto.request;
 
+import jakarta.persistence.Table;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -8,6 +9,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
+
 public class FlightsRequest {
     String flightNumber;
 

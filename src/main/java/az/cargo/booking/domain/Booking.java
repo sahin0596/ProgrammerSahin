@@ -30,7 +30,7 @@ public class Booking {
 
     @OneToMany(mappedBy = "booking",cascade = CascadeType.ALL)
     @Builder.Default
-    List<Flights> flights = new ArrayList<>();
+    List<Flight> flights = new ArrayList<>();
 
     @OneToMany(mappedBy = "booking",cascade = CascadeType.ALL)
     @Builder.Default

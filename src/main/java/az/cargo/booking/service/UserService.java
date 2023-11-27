@@ -4,6 +4,7 @@ import az.cargo.booking.domain.User;
 import az.cargo.booking.dto.request.UserRequest;
 import az.cargo.booking.dto.response.UserResponse;
 import az.cargo.booking.repository.UserRepository;
+import az.cargo.booking.service.serviceimpl.UserServiceImp;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
