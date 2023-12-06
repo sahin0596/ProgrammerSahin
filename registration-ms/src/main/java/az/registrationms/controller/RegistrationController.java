@@ -5,7 +5,6 @@ import az.registrationms.service.RegistrationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/v1/registration")

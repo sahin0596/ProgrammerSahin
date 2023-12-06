@@ -1,6 +1,5 @@
 package az.registrationms.entity;
 
-import jakarta.annotation.PostConstruct;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;

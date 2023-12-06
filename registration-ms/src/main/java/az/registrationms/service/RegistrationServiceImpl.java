@@ -23,17 +23,17 @@ public class RegistrationServiceImpl implements RegistrationService {
     public ResponseEntity<?> saveUser(Registration user) {
 
         if (registrationRepository.existsByUserEmail(user.getUserEmail())) {
-            return ResponseEntity.badRequest().body("Error: Giriş eləmisən dana nə diriyifsən ?");
+            return ResponseEntity.badRequest().body("Error: This Account already exists");
         }
         registrationRepository.save(user);
         ConfirmationToken confirmationToken = new ConfirmationToken();
         tokenRepository.save(confirmationToken);
-        String subject = "Registrasiyani tamamla qardashim";
-        String text = "Salam brat, zehmet olmasa clickle yorma bizi sene zehmet:" +
-                "http://localhost:8082/v1/registration/confirm-account?token=" + confirmationToken.getConfirmationToken();
+        String subject = "Complete the registration";
+        String text = "Hello " + user.getUserName() + ",Thank you for choosing our company.Please complete the registration by clicking on the link:" +
+                "http://localhost:8080/v1/registration/confirm-account?token=" + confirmationToken.getConfirmationToken();
         mailSender.sendEmail(user.getUserEmail(), subject, text);
         System.out.println("Confirmation Token: " + confirmationToken.getConfirmationToken());
-        return ResponseEntity.ok("Təsdiqlə brat emailivi sənin də işin getsin bizim də");
+        return ResponseEntity.ok("Please complete the registration");
     }
 
     @Override
@@ -45,8 +45,8 @@ public class RegistrationServiceImpl implements RegistrationService {
             Registration user = registrationRepository.findByUserEmailIgnoreCase(token.getUserEntity().getUserEmail());
             user.setEnabled(true);
             registrationRepository.save(user);
-            return ResponseEntity.ok("Halaldı sənə kişi adamsan uğurlu oldu");
+            return ResponseEntity.ok("You have successfully registered");
         }
-        return ResponseEntity.badRequest().body("Tfu yüzünə yekə adamsan bir dənə emaili verify eliyəmmədin");
+        return ResponseEntity.badRequest().body("Registration Failed");
     }
 }

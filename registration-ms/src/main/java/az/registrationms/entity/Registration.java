@@ -25,6 +25,8 @@ public class Registration {
 
     String userName;
 
+    String lastName;
+
     String userEmail;
 
     String userPassword;
